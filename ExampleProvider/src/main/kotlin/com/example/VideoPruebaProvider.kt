@@ -1,21 +1,21 @@
-package com.jose.videoprueba
-
-import com.lagradost.cloudstream3.*
-import com.lagradost.cloudstream3.utils.*
-
-class VideoPruebaProvider : MainAPI() {
-    override var mainUrl = "https://example.com"
-    override var name = "Video de prueba"
-    override var lang = "es"
-    override val supportedTypes = setOf(TvType.Movie)
-
-    override suspend fun load(url: String): LoadResponse {
-        return MovieLoadResponse(
-            name = "Pulgarcito",
-            url = url,
-            apiName = name,
-            type = TvType.Movie,
-            dataUrl = "https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4"
-        )
-    }
+return newMovieLoadResponse(
+    name = name,
+    url = url,
+    type = TvType.Movie,
+    dataUrl = dataUrl
+) {
+    posterUrl = posterUrl
+    year = year
+    plot = plot
+    rating = rating
+    tags = tags
+    duration = duration
+    trailers = trailers
+    recommendations = recommendations
+    actors = actors
+    comingSoon = comingSoon
+    syncData = syncData
+    posterHeaders = posterHeaders
+    backgroundPosterUrl = backgroundPosterUrl
+    contentRating = "PG-13" // o el que corresponda
 }
