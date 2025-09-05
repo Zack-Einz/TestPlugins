@@ -12,28 +12,33 @@ class VideoPruebaProvider : MainAPI() {
         return newMovieLoadResponse(
             name = "Película de prueba",
             url = url,
-            type = TvType.Movie
+            type = TvType.Movie,
+            dataUrl = "https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4"
         ) {
-            // Línea 37: rating ahora como Int? (antes Double)
-            rating = 8.5.toInt()
-
-            // Línea 40: mutable list en vez de list inmutable
+            posterUrl = "https://tusitio.com/poster.jpg"
+            year = 2024
+            plot = "Una película de ejemplo para probar el plugin"
+            rating = 8 // Int, no Double
+            tags = listOf("Acción", "Aventura")
+            duration = 120
             trailers = mutableListOf(
                 TrailerData("Trailer oficial", "https://video.com/trailer.mp4")
             )
-
-            // Línea 41: lista del tipo correcto (SearchResponse)
             recommendations = listOf(
-                MovieSearchResponse(
+                newMovieSearchResponse(
                     name = "Otra película",
                     url = "https://video.com/otra",
+                    type = TvType.Movie,
                     apiName = this@VideoPruebaProvider.name,
-                    type = TvType.Movie
+                    raw = "https://video.com/otra"
                 )
             )
-
-            // Línea 44: mapa mutable vacío en vez de null
-            extraInfo = mutableMapOf()
+            actors = emptyList()
+            comingSoon = false
+            syncData = mutableMapOf()
+            posterHeaders = null
+            backgroundPosterUrl = null
+            contentRating = "PG-13"
         }
     }
 }
